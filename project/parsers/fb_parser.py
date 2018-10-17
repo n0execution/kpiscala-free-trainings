@@ -1,14 +1,26 @@
 from project import config
 from selenium import webdriver
 from bs4 import BeautifulSoup
+import time
 
 
 driver = webdriver.Chrome(config.DRIVER_PATH)
 
 
+def scroll_down():
+    SCROLL_PAUSE_TIME = 0.5
+
+    for i in range(5):
+        # Scroll down to bottom
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+        # Wait to load page
+        time.sleep(SCROLL_PAUSE_TIME)
+
+
 def get_page_html():
     driver.get('https://www.facebook.com/kpiclimbing/')
-    driver.execute_script("window.scrollTo(0, 3600)")
+    scroll_down()
     return driver.page_source
 
 
