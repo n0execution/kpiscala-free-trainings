@@ -22,7 +22,7 @@ def login():
 def scroll_down():
     SCROLL_PAUSE_TIME = 0.5
 
-    for i in range(5):
+    for i in range(10):
         # Scroll down to bottom
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
@@ -39,4 +39,5 @@ def get_page_html():
 def get_all_posts():
     html = get_page_html()
     soup = BeautifulSoup(html, 'lxml')
-    posts = soup.find('div', class_='_1xnd').find_all('div', class_='_4-u2 _4-u8')
+    posts = soup.find_all('div', class_='_1xnd')[2].find_all('div', class_='_4-u2 _4-u8')
+    return posts
