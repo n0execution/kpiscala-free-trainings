@@ -111,3 +111,4 @@ venv.bak/
 #virtual enviroments
 env/
 venv/
+config.py
