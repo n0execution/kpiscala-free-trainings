@@ -7,6 +7,18 @@ import time
 driver = webdriver.Chrome(config.DRIVER_PATH)
 
 
+def login():
+    driver.get('https://www.facebook.com/login.php?login_attempt=1&lwv=110')
+    email = driver.find_element_by_xpath("//input[@id='email' or @name='email']")
+    email.send_keys(config.EMAIL)
+
+    password = driver.find_element_by_xpath("//input[@id='pass']")
+    password.send_keys(config.PASSWORD)
+
+    button = driver.find_element_by_xpath("//button[@id='loginbutton']")
+    button.click()
+
+
 def scroll_down():
     SCROLL_PAUSE_TIME = 0.5
 
