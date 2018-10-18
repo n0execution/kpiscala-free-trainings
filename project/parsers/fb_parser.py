@@ -31,6 +31,11 @@ def scroll_down():
         time.sleep(SCROLL_PAUSE_TIME)
 
 
+def write_registration_date(post_date):
+    with open('registration_date.txt', 'w') as f:
+        f.write(post_date)
+
+
 def get_page_html():
     driver.get('https://www.facebook.com/kpiclimbing/')
     scroll_down()
@@ -51,4 +56,5 @@ def check_posts():
         post_date = post.find('abbr')['title']
 
         if config.keyword in post_text:
+            write_registration_date(post_date)
             print('New registration')
