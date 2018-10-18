@@ -43,3 +43,12 @@ def get_all_posts():
     posts_block = soup.find_all('div', class_='_1xnd')[2].find('div', class_='_4-u2 _3xaf _3-95 _4-u8')
     posts = posts_block.find_all('div', class_='_5va1 _427x')
     return posts
+
+
+def check_posts():
+    for post in get_all_posts():
+        post_text = post.find('div', class_='_5pbx userContent _3576').get_text()
+        post_date = post.find('abbr')['title']
+
+        if config.keyword in post_text:
+            print('New registration')
