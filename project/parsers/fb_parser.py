@@ -70,7 +70,8 @@ def check_posts():
 
         if config.keyword in post_text and get_datetime(registration_date) < get_datetime(post_date):
             write_registration_date(post_date)
-            bot.send_photo(config.CHAT_ID,
-                           photo,
-                           caption=message_textб
-                           parse_mode='Markdown')
+            message = bot.send_photo(config.CHAT_ID,
+                                     photo,
+                                     caption=message_textб
+                                     parse_mode='Markdown')
+            bot.pin_chat_message(config.CHAT_ID, message.message_id)
