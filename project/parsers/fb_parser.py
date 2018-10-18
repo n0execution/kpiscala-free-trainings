@@ -36,6 +36,10 @@ def write_registration_date(post_date):
         f.write(post_date)
 
 
+def get_datetime(date_string):
+    return datetime.strptime(date_string, "%d/%m/%Y %H:%M")
+
+
 def get_page_html():
     driver.get('https://www.facebook.com/kpiclimbing/')
     scroll_down()
