@@ -112,3 +112,4 @@ venv.bak/
 env/
 venv/
 config.py
+registration_date.txt
