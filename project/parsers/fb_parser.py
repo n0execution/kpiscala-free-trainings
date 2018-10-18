@@ -1,8 +1,8 @@
-from project.bot import bot, config
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import time
 from datetime import datetime
+import config
 
 
 driver = webdriver.Chrome(config.DRIVER_PATH)
@@ -59,7 +59,7 @@ def get_all_posts():
     return posts
 
 
-def check_posts():
+def check_posts(bot):
     for post in get_all_posts():
         post_text = post.find('div', class_='_5pbx userContent _3576').get_text()
         post_date = post.find('abbr')['title']
@@ -72,6 +72,6 @@ def check_posts():
             write_registration_date(post_date)
             message = bot.send_photo(config.CHAT_ID,
                                      photo,
-                                     caption=message_textб
+                                     caption=message_text,
                                      parse_mode='Markdown')
             bot.pin_chat_message(config.CHAT_ID, message.message_id)
