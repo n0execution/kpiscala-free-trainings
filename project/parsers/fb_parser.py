@@ -36,6 +36,11 @@ def write_registration_date(post_date):
         f.write(post_date)
 
 
+def read_registration_date():
+    with open('registration_date.txt', 'r') as f:
+        return f.read()
+
+
 def get_datetime(date_string):
     return datetime.strptime(date_string, "%d/%m/%Y %H:%M")
 
@@ -58,7 +63,8 @@ def check_posts():
     for post in get_all_posts():
         post_text = post.find('div', class_='_5pbx userContent _3576').get_text()
         post_date = post.find('abbr')['title']
+        registration_date = read_registration_date()
 
-        if config.keyword in post_text:
+        if config.keyword in post_text and get_datetime(registration_date) < get_datetime(post_date):
             write_registration_date(post_date)
             print('New registration')
