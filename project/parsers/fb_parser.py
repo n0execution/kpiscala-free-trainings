@@ -2,6 +2,7 @@ from project import config
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import time
+from datetime import datetime
 
 
 driver = webdriver.Chrome(config.DRIVER_PATH)
@@ -39,5 +40,6 @@ def get_page_html():
 def get_all_posts():
     html = get_page_html()
     soup = BeautifulSoup(html, 'lxml')
-    posts = soup.find_all('div', class_='_1xnd')[2].find_all('div', class_='_4-u2 _4-u8')
+    posts_block = soup.find_all('div', class_='_1xnd')[2].find('div', class_='_4-u2 _3xaf _3-95 _4-u8')
+    posts = posts_block.find_all('div', class_='_5va1 _427x')
     return posts
