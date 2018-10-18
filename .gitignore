@@ -111,5 +111,6 @@ venv.bak/
 #virtual enviroments
 env/
 venv/
+tmp/
 config.py
 registration_date.txt
