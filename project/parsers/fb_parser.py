@@ -1,4 +1,4 @@
-from project import config
+from project.bot import bot, config
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import time
@@ -64,7 +64,13 @@ def check_posts():
         post_text = post.find('div', class_='_5pbx userContent _3576').get_text()
         post_date = post.find('abbr')['title']
         registration_date = read_registration_date()
+        message_text = '\n' + post_text + '\n' + '\n'.join(config.usernames)
+
+        photo = open(config.PHOTO_PATH, 'rb')
 
         if config.keyword in post_text and get_datetime(registration_date) < get_datetime(post_date):
             write_registration_date(post_date)
-            print('New registration')
+            bot.send_photo(config.CHAT_ID,
+                           photo,
+                           caption=message_textб
+                           parse_mode='Markdown')
