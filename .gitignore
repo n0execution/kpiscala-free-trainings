@@ -114,3 +114,4 @@ venv/
 tmp/
 config.py
 registration_date.txt
+session_name.session
