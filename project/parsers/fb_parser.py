@@ -28,7 +28,7 @@ def login():
 def scroll_down():
     SCROLL_PAUSE_TIME = 0.5
 
-    for i in range(10):
+    for i in range(5):
         # Scroll down to bottom
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
@@ -37,12 +37,12 @@ def scroll_down():
 
 
 def write_registration_date(post_date):
-    with open('registration_date.txt', 'w') as f:
+    with open('project/registration_date.txt', 'w') as f:
         f.write(post_date)
 
 
 def read_registration_date():
-    with open('registration_date.txt', 'r') as f:
+    with open('project/registration_date.txt', 'r') as f:
         return f.read()
 
 

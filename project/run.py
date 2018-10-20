@@ -5,4 +5,5 @@ from bot import bot, config
 
 while(True):
     fb_parser.check_posts(bot)
+    print('checked')
     sleep(60)
