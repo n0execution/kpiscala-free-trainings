@@ -3,9 +3,14 @@ from bs4 import BeautifulSoup
 import time
 from datetime import datetime
 import config
+from selenium.webdriver.chrome.options import Options
 
 
-driver = webdriver.Chrome(config.DRIVER_PATH)
+options = Options()
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+driver = webdriver.Chrome(config.DRIVER_PATH, chrome_options=options)
 
 
 def login():
