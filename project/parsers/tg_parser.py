@@ -16,12 +16,12 @@ def check_posts(bot):
             if condition1 and condition2:
                 write_registration_date(convert_date(message.date).strftime("%d.%m.%Y %H:%M"))
 
-                message_text = '\n' + message.message
+                message_text = message.message.replace()
                 photo = open(config.PHOTO_PATH, 'rb')
 
                 message = bot.send_photo(config.CHAT_ID,
                                          photo,
-                                         caption=message_text,
-                                         parse_mode='Markdown')
-                bot.send_message(config.CHAT_ID, '\n'.join(config.usernames))
+                                         caption=message_text
+                                         )
+                bot.send_message(config.CHAT_ID, '\n'.join(config.usernames), parse_mode='Markdown')
                 bot.pin_chat_message(config.CHAT_ID, message.message_id)

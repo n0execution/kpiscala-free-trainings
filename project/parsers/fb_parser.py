@@ -65,7 +65,6 @@ def check_posts(bot):
             helper_methods.write_registration_date(post_date)
             message = bot.send_photo(config.CHAT_ID,
                                      photo,
-                                     caption=message_text,
-                                     parse_mode='Markdown')
-            bot.send_message(config.CHAT_ID, '\n'.join(config.usernames))
+                                     caption=message_text)
+            bot.send_message(config.CHAT_ID, '\n'.join(config.usernames), parse_mode='Markdown')
             bot.pin_chat_message(config.CHAT_ID, message.message_id)
