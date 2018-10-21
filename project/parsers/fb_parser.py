@@ -11,7 +11,6 @@ options = Options()
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
-driver = webdriver.Chrome(config.DRIVER_PATH, chrome_options=options)
 
 
 def login(driver):
@@ -58,7 +57,7 @@ def check_posts(bot):
         post_text = post.find('div', class_='_5pbx userContent _3576').get_text()
         post_date = post.find('abbr')['title']
         registration_date = helper_methods.read_registration_date()
-        message_text = '\n' + post_text + '\n' + '\n'.join(config.usernames)
+        message_text = '\n' + post_text
 
         photo = open(config.PHOTO_PATH, 'rb')
 
@@ -68,4 +67,5 @@ def check_posts(bot):
                                      photo,
                                      caption=message_text,
                                      parse_mode='Markdown')
+            bot.send_message(config.CHAT_ID, '\n'.join(config.usernames))
             bot.pin_chat_message(config.CHAT_ID, message.message_id)
