@@ -13,7 +13,7 @@ options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome(config.DRIVER_PATH, chrome_options=options)
 
 
-def login():
+def login(driver):
     driver.get('https://www.facebook.com/login.php?login_attempt=1&lwv=110')
     email = driver.find_element_by_xpath("//input[@id='email' or @name='email']")
     email.send_keys(config.EMAIL)
@@ -25,7 +25,7 @@ def login():
     button.click()
 
 
-def scroll_down():
+def scroll_down(driver):
     SCROLL_PAUSE_TIME = 0.5
 
     for i in range(5):
@@ -50,22 +50,24 @@ def get_datetime(date_string):
     return datetime.strptime(date_string, "%d/%m/%Y %H:%M")
 
 
-def get_page_html():
+def get_page_html(driver):
     driver.get('https://www.facebook.com/kpiclimbing/')
-    scroll_down()
+    scroll_down(driver)
     return driver.page_source
 
 
-def get_all_posts():
-    html = get_page_html()
+def get_all_posts(driver):
+    html = get_page_html(driver)
     soup = BeautifulSoup(html, 'lxml')
     posts_block = soup.find_all('div', class_='_1xnd')[2].find('div', class_='_4-u2 _3xaf _3-95 _4-u8')
     posts = posts_block.find_all('div', class_='_5va1 _427x')
+    driver.quit()
     return posts
 
 
 def check_posts(bot):
-    for post in get_all_posts():
+    driver = webdriver.Chrome(config.DRIVER_PATH, chrome_options=options)
+    for post in get_all_posts(driver):
         post_text = post.find('div', class_='_5pbx userContent _3576').get_text()
         post_date = post.find('abbr')['title']
         registration_date = read_registration_date()
