@@ -4,9 +4,12 @@ from bot import bot, config
 
 
 while(True):
-    print('checking telegram...')
-    tg_parser.check_posts(bot)
-    print('checking facebook...')
-    fb_parser.check_posts(bot)
-    print('checked')
+    try:
+        print('checking telegram...')
+        tg_parser.check_posts(bot)
+        print('checking facebook...')
+        fb_parser.check_posts(bot)
+        print('checked')
+    except Exception as e:
+        print('ERROR:', e)
     sleep(60)
