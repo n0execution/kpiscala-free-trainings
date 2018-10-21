@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from pytz import timezone
 
 
 def write_registration_date(post_date):
@@ -13,3 +14,8 @@ def read_registration_date():
 
 def get_datetime(date_string):
     return datetime.strptime(date_string, "%d.%m.%Y %H:%M") + timedelta(minutes=1)
+
+
+def convert_date(date):
+    utc_date = date.replace(tzinfo=timezone('UTC'))
+    return utc_date.astimezone(timezone('Europe/Kiev'))
