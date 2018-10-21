@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 def write_registration_date(post_date):
@@ -12,4 +12,4 @@ def read_registration_date():
 
 
 def get_datetime(date_string):
-    return datetime.strptime(date_string, "%d/%m/%Y %H:%M")
+    return datetime.strptime(date_string, "%d.%m.%Y %H:%M") + timedelta(minutes=1)
