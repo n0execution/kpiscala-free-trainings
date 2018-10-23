@@ -1,7 +1,8 @@
 from telethon import TelegramClient, sync
+from pytz import timezone
+
 import config
 from helper_methods import *
-from pytz import timezone
 
 
 def check_posts(bot):
@@ -16,7 +17,7 @@ def check_posts(bot):
             if condition1 and condition2:
                 write_registration_date(convert_date(message.date).strftime("%d.%m.%Y %H:%M"))
 
-                message_text = message.message.replace()
+                message_text = message.message
                 photo = open(config.PHOTO_PATH, 'rb')
 
                 message = bot.send_photo(config.CHAT_ID,

@@ -1,6 +1,7 @@
-from parsers import fb_parser, tg_parser
 from time import sleep
+
 from bot import bot, config
+from parsers import fb_parser, tg_parser
 
 
 while(True):
@@ -12,4 +13,5 @@ while(True):
         print('checked')
     except Exception as e:
         print('ERROR:', e)
+        break
     sleep(60)

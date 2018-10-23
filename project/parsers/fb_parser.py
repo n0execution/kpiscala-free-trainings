@@ -1,9 +1,10 @@
-from selenium import webdriver
-from bs4 import BeautifulSoup
 import time
 from datetime import datetime
-import config
+from bs4 import BeautifulSoup
+from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+
+import config
 import helper_methods
 
 
