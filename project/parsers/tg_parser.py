@@ -16,7 +16,7 @@ def check_posts(bot):
                 condition1 = config.keyword in message.message
             else:
                 condition1 = False
-            condition2 = get_datetime(registration_date).replace(tzinfo=timezone('Europe/Kiev')) < convert_date(message.date)
+            condition2 = get_datetime(registration_date).replace(tzinfo=timezone('Europe/Kiev')) < message.date
 
             if condition1 and condition2:
                 write_registration_date(convert_date(message.date).strftime("%d.%m.%Y %H:%M"))
