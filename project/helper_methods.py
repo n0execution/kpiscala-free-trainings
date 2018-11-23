@@ -18,4 +18,4 @@ def get_datetime(date_string):
 
 def convert_date(date):
     utc_date = date.replace(tzinfo=timezone('UTC'))
-    return utc_date.astimezone(timezone('Europe/Kiev'))
+    return utc_date
