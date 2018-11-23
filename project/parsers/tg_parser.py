@@ -11,7 +11,11 @@ def check_posts(bot):
 
     with client:
         for message in client.iter_messages('kpiclimbing', limit=20):
-            condition1 = config.keyword in message.message
+            print(config.keyword)
+            if message.message is not None:
+                condition1 = config.keyword in message.message
+            else:
+                condition1 = False
             condition2 = get_datetime(registration_date).replace(tzinfo=timezone('Europe/Kiev')) < convert_date(message.date)
 
             if condition1 and condition2:
