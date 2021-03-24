@@ -9,7 +9,7 @@ pyasn1==0.4.4
 pyTelegramBotAPI==3.6.6
 pytz==2018.5
 requests==2.20.0
-rsa==4.0
+rsa==4.1
 selenium==3.14.1
 six==1.11.0
 Telethon==1.3
